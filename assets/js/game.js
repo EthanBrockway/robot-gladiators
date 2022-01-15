@@ -14,40 +14,43 @@ var promptFight = window.prompt(
 
 if (promptFight === "fight" || promptFight === "FIGHT") {
   var fight = function (enemyName) {
-    window.alert("Welcome to Robot Gladiators!");
-    enemyHealth = enemyHealth - playerAttack;
-    console.log(
-      playerName +
-        " attacked " +
-        enemyNames[0] +
-        ". " +
-        enemyNames[0] +
-        " now has " +
-        enemyHealth +
-        " health remaining."
-    );
-    if (enemyHealth <= 0) {
-      window.alert(enemyNames[0] + " has died ");
-    } else {
-      window.alert(
-        enemyNames[0] + " still has " + enemyHealth + " health left."
+    while (enemyHealth > 0) {
+      enemyHealth = enemyHealth - playerAttack;
+      console.log(
+        playerName +
+          " attacked " +
+          enemyNames[0] +
+          ". " +
+          enemyNames[0] +
+          " now has " +
+          enemyHealth +
+          " health remaining."
       );
-    }
-    playerHealth = playerHealth - enemyAttack;
-    console.log(
-      enemyNames[0] +
-        " attacked " +
-        playerName +
-        ". " +
-        playerName +
-        " now has " +
-        playerHealth +
-        " health remaining."
-    );
-    if (playerHealth <= 0) {
-      window.alert(playerName + " has died!");
-    } else {
-      window.alert(playerName + " still has " + playerHealth + " health left.");
+      if (enemyHealth <= 0) {
+        window.alert(enemyNames[0] + " has died ");
+      } else {
+        window.alert(
+          enemyNames[0] + " still has " + enemyHealth + " health left."
+        );
+      }
+      playerHealth = playerHealth - enemyAttack;
+      console.log(
+        enemyNames[0] +
+          " attacked " +
+          playerName +
+          ". " +
+          playerName +
+          " now has " +
+          playerHealth +
+          " health remaining."
+      );
+      if (playerHealth <= 0) {
+        window.alert(playerName + " has died!");
+      } else {
+        window.alert(
+          playerName + " still has " + playerHealth + " health left."
+        );
+      }
     }
   };
 } else if (promptFight === "skip" || promptFight === "SKIP") {
@@ -68,5 +71,7 @@ for (var i = 0; i < enemyNames.length; i++) {
 }
 
 for (var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames[i]);
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
 }
