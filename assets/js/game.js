@@ -214,14 +214,21 @@ var shop = function () {
   }
 };
 var endGame = function () {
-  if (playerInfo.health > 0) {
-    window.alert(
-      "Great job, you've survived the game! you now have a score of " +
-        playerInfo.money +
-        "."
+  window.alert("Game over. Lets see your score!");
+  var highScore = localStorage.getItem("Highscore");
+  if (highScore === null) {
+    highScore = 0;
+  }
+  if (playerInfo.money > highScore) {
+    localStorage.setItem("name", playerInfo.name);
+    localStorage.setItem("highscore", playerInfo.money);
+    alert(
+      playerInfo.name + " now has the high score of " + playerInfo.money + "!!!"
     );
   } else {
-    window.alert("You've lost your robot in battle.");
+    alert(
+      playerInfo.name + " did not beat the high score of " + highScore + ". :/"
+    );
   }
   var playAgainConfirm = window.confirm("Would you like to play again?");
   if (playAgainConfirm) {
